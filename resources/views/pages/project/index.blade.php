@@ -21,6 +21,7 @@
                         </li>
                     @endforeach
                 </ul>
+                <img src="{{ asset('storage/' . $project->image) }}" alt="" width="300px">
             </li>
         @endforeach
     </ul>

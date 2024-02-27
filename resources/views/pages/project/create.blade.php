@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     <h1>NEW PROJECT</h1>
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
 
         @csrf
         @method('POST')
@@ -33,6 +33,8 @@
                 </label>
             </div>
         @endforeach
+        <label for="image">Image</label>
+        <input type="file" name="image" id="image" accept="image/png">
         <input type="submit" value="CREATE">
     </form>
 @endsection

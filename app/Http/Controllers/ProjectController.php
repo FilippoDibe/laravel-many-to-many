@@ -8,6 +8,8 @@ use App\Models\Project;
 use App\Models\Type;
 use App\Models\Technology;
 
+use Illuminate\Support\Facades\Storage;
+
 class ProjectController extends Controller
 {
 
@@ -28,11 +30,16 @@ class ProjectController extends Controller
 
         $data = $request -> all();
 
+        $img= $data['image'];
+        $img_path = Storage::disk('public')
+            ->put('images', $img);
         $type = Type :: find($data['type_id']);
 
         $project = new Project();
         $project -> name = $data['name'];
         $project -> description = $data['description'];
+        $project -> image = $img_path;
+
 
         $project -> type() -> associate($type);
 
