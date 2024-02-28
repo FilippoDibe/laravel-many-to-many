@@ -68,8 +68,15 @@ class ProjectController extends Controller
         $project = Project :: find($id);
         $project -> name = $data['name'];
         $project -> description = $data['description'];
+        $project -> image = $img_path;
+
 
         $project -> type() -> associate($type);
+
+        $img = $data['image'];
+        $img_path = Storage::disk('public')
+        ->put('images', $img);
+
 
         $project -> save();
 
